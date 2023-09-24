@@ -8,6 +8,8 @@ namespace matrices_vectores
         static void Main(string[] args)
         {
             int vec_mat;
+            int colum;
+            colum = 0;  
             Console.WriteLine("EJERCICIOS VECTORES Y MATRICES\n1.Vectores.\n2.Matrices\nIngresa el valor correspondiente: ");
             vec_mat = int.Parse(Console.ReadLine());
             switch (vec_mat)
@@ -172,13 +174,13 @@ namespace matrices_vectores
                                 int fila;
                                 int fila_2;
                                 fila_2 = 0;
-                                
-                                
+
+
                                 int columna;
                                 int columna_2;
                                 columna_2 = 0;
-                                
-                                
+
+
                                 fila = 0;
                                 columna = 0;
 
@@ -190,16 +192,16 @@ namespace matrices_vectores
                                 fila = int.Parse(Console.ReadLine());
                                 Console.Write("Ingresa el numero de columnas: ");
                                 columna = int.Parse(Console.ReadLine());
-                                
+
                                 int[,] matriz_1 = new int[fila, columna];
-                                
+
                                 //rellenar valores matriz 1
-                                for(int k=0; k < fila; k++)
+                                for (int k = 0; k < fila; k++)
                                 {
-                                    for(int v = 0; v < columna; v++)
+                                    for (int v = 0; v < columna; v++)
                                     {
                                         Console.WriteLine($"Ingresa el valor de la posicion {k},{v}: ");
-                                        matriz_1[k, v] = int.Parse(Console.ReadLine() );
+                                        matriz_1[k, v] = int.Parse(Console.ReadLine());
                                     }
                                 }
                                 Console.WriteLine("MATRIZ RESULTANTE 1");
@@ -207,11 +209,11 @@ namespace matrices_vectores
                                 {
                                     for (int v = 0; v < columna; v++)
                                     {
-                                        Console.Write("\t"+matriz_1[k,v]+" ");
+                                        Console.Write("\t" + matriz_1[k, v] + " ");
                                     }
                                     Console.WriteLine();
                                 }
-                                
+
                                 //crear matriz 2
                                 Console.WriteLine("MATRIZ 2");
                                 Console.Write("Ingresael numero de filas: ");
@@ -220,7 +222,7 @@ namespace matrices_vectores
                                 columna_2 = int.Parse(Console.ReadLine());
 
                                 int[,] matriz_2 = new int[fila_2, columna_2];
-                                
+
                                 //rellenar valores matriz 2
                                 for (int c = 0; c < fila_2; c++)
                                 {
@@ -236,7 +238,7 @@ namespace matrices_vectores
                                 {
                                     for (int d = 0; d < columna_2; d++)
                                     {
-                                        Console.Write("\t"+matriz_2[c,d]+" ");
+                                        Console.Write("\t" + matriz_2[c, d] + " ");
                                     }
                                     Console.WriteLine();
                                 }
@@ -247,12 +249,12 @@ namespace matrices_vectores
                                 else
                                 {
                                     //suma_matrices
-                                    int[,] matriz_resultante = new int[fila, columna];
+                                    int[,] matriz_resultantee = new int[fila, columna];
                                     for (int c = 0; c < fila_2; c++)
                                     {
                                         for (int d = 0; d < columna_2; d++)
                                         {
-                                            matriz_resultante[c,d] = matriz_1[c, d] + matriz_2[c,d];    
+                                            matriz_resultantee[c, d] = matriz_1[c, d] + matriz_2[c, d];
                                         }
                                     }
                                     Console.WriteLine("SUMA MATRIZ");
@@ -260,24 +262,121 @@ namespace matrices_vectores
                                     {
                                         for (int d = 0; d < columna_2; d++)
                                         {
-                                            Console.Write(matriz_resultante[c, d] + " ");
+                                            Console.Write(matriz_resultantee[c, d] + " ");
                                         }
                                         Console.WriteLine();
                                     }
                                 }
                                 break;
                             case 3:
-                                Console.Write("3.Multiplicar una matriz por un escalar.");
+                                //matriz_resultante[a,b] = matriz_1[a,b]*c siendo c un numero entero
+                                int fil;
+                                
+                                int escalar;
+                               
+
+                                Console.Write("3.Multiplicar una matriz por un escalar.\nIngresa el numero de filas de la matriz: ");
+                                fil = int.Parse(Console.ReadLine());
+                                Console.WriteLine("Ingresa el numero de columnas: ");
+                                colum = int.Parse(Console.ReadLine());
+                                int[,] matriz_principal = new int[fil, colum];
+                                int[,] matriz_resultanteee = new int[fil, colum];
+                                //rellenar
+                                for (int a = 0; a < fil; a++)
+                                {
+                                    for (int b = 0; b < colum; b++)
+                                    {
+                                        Console.Write($"Ingresa el valor de la posicion {a},{b}: ");
+                                        matriz_principal[a, b] = int.Parse(Console.ReadLine());
+                                    }
+                                }
+                                //mostrar matriz
+                                Console.WriteLine("MATRIZ PRINCIPAL");
+                                for (int a = 0; a < fil; a++)
+                                {
+                                    for (int b = 0; b < colum; b++)
+                                    {
+                                        Console.Write("\t" + matriz_principal[a, b] + " ");
+
+                                    }
+                                    Console.WriteLine();
+                                }
+                                //ingresar numero de escalar
+                                Console.WriteLine("Ingresa el valor del escalar: ");
+                                escalar = int.Parse(Console.ReadLine());
+                                //multiplicar por escalar
+                                for (int a = 0; a < fil; a++)
+                                {
+                                    for (int b = 0; b < colum; b++)
+                                    {
+                                        matriz_resultanteee[a, b] = matriz_principal[a, b] * escalar;
+
+                                    }
+
+                                }
+                                //mostrar matriz resultante
+                                Console.WriteLine("MATRIZ RESULTANTE");
+                                for (int a = 0; a < fil; a++)
+                                {
+                                    for (int b = 0; b < colum; b++)
+                                    {
+                                        Console.Write(matriz_resultanteee[a, b]+" ");
+
+                                    }
+                                    Console.WriteLine();
+                                }
+                                break;
+                            case 4:
+                                //matriz cuadra = i=j
+                                int filla;
+                                int column;
+                                
+                                Console.WriteLine("4.Encontrar el determinante de una matriz cuadrada.\nIngresa el numero de filas: ");
+                                filla = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Ingresa el numero de columnas: ");
+                                column = int.Parse(Console.ReadLine());
+
+                                if(colum == filla)
+                                {
+                                    //rellenar matriz
+                                    int[,] matriz_nueva = new int[filla, column];
+
+                                    for (int p = 0; p < filla; p++)
+                                    {
+                                        for (int u = 0; u < column; u++)
+                                        {
+                                            Console.Write($"Ingresa el valor de la posicion {u},{p}");
+                                            matriz_nueva[p, u] = int.Parse(Console.ReadLine());
+                                        }
+                                    }
+                                    //mostrar matriz
+                                    Console.WriteLine("MATRIZ PRINCIPAL");
+                                    for (int p = 0; p < filla; p++)
+                                    {
+                                        for (int u = 0; u < column; u++)
+                                        {
+                                            Console.Write("\t" + matriz_nueva[p, u] + " ");
+                                        }
+                                        Console.WriteLine();
+                                    }
+                                }
+                                else
+                                {
+                                    Console.Write("NO ES MATRIZ CUADRADA");
+                                    break;
+                                }
+                                
                                 break;
                         }
                     } while (num_ejercicio != 5);
-                    
+
 
 
 
                     break;
             }
-            
+
         }
     }
 }
